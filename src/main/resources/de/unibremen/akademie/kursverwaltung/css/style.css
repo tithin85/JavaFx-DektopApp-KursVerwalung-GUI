@@ -1,3 +1,5 @@
+
+
 #tabpane {
     -fx-tab-max-height: 4em;
     -fx-tab-min-height: 4em;
@@ -23,6 +25,7 @@
 }
 
 .subheadline {
+
     -fx-text-fill: #73d194;
     -fx-font-style: italic;
     -fx-font-size: 1.3em;
@@ -130,3 +133,50 @@
 }
 
 
+/* kurs-details */
+
+.lblKursDetailsLinks {
+    -fx-pref-width: 12.5em;
+}
+
+.lblKursDetailsRechts {
+    -fx-pref-width: 10em;
+}
+
+.inpFeldKursDetails {
+    -fx-pref-width: 12.5em;
+}
+
+
+
+#txtAreaKursBeschreibung{
+
+    -fx-pref-width: 53em;
+    -fx-max-width: 55em;
+    -fx-pref-height: 15em;
+}
+
+/* personendetails */
+
+.lblPersonenDetails {
+-fx-padding: 1 0 0 2em;
+    -fx-pref-width: 15em;
+    -fx-pref-height: 2.0em;
+}
+
+#lblPersonenDetailsAnrede {
+    -fx-padding: 1em 0 0 2em;
+}
+
+#choiceAnrede {
+    -fx-margin: 2em 0 0 2em;
+    -fx-pref-height: 2.3em;
+    -fx-pref-width: 7em;
+}
+
+.inpFeldPersonenDetails{
+    -fx-margin: 0em 0 0 2em;
+    -fx-pref-height: 2.5em;
+    -fx-pref-width: 25em;
+    -fx-max-width: 27em;
+}

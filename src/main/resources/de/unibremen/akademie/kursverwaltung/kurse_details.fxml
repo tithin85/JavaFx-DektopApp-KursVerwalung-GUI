@@ -36,72 +36,95 @@
                                                     <children>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="150.0" text="Kursname: ">
+                                                                <Label styleClass="lblKursDetailsLinks"
+                                                                       text="Kursname: ">
                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
+                                                                        <Insets left="10.0"/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpKursname" promptText="z.B. Java Anfänger 2023" />
+                                                                <TextField fx:id="txInpKursname"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           promptText="z.B. Java Anfänger 2023"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="150.0" text="Anzahl Tage:">
+                                                                <Label styleClass="lblKursDetailsLinks"
+                                                                       text="Anzahl Tage:">
                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
+                                                                        <Insets left="10.0"/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpAnzahlTage" promptText="z.B.  2" />
+                                                                <TextField fx:id="txInpAnzahlTage"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           promptText="z.B.  2"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="150.0" text="Start-Datum: ">
+                                                                <Label styleClass="lblKursDetailsLinks"
+                                                                       text="Start-Datum: ">
                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
+                                                                        <Insets left="10.0"/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <DatePicker fx:id="pickStartDatum" onAction="#onDatePickerAction" prefWidth="163.0" promptText="01.01.1970" />
+                                                                <DatePicker fx:id="pickStartDatum"
+                                                                            styleClass="inpFeldKursDetails"
+                                                                            onAction="#onDatePickerAction"
+                                                                            promptText="01.01.1970"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="150.0" text="Min. Teilnehmer: ">
+                                                                <Label styleClass="lblKursDetailsLinks"
+                                                                       text="Min. Teilnehmer: ">
                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
+                                                                        <Insets left="10.0"/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpMinTnZahl" promptText="z.B.  5" />
+                                                                <TextField fx:id="txInpMinTnZahl"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           promptText="z.B.  5"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="150.0" text="Akt. Teilnehmerzahl: ">
+                                                                <Label styleClass="lblKursDetailsLinks"
+                                                                       text="Akt. Teilnehmerzahl: ">
                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
+                                                                        <Insets left="10.0"/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpAktuelleTnZahl" disable="true" editable="false" promptText="automatisch berechnet" />
+                                                                <TextField fx:id="txInpAktuelleTnZahl"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           disable="true" editable="false"
+                                                                           promptText="automatisch berechnet"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="150.0" text="Gebühr brutto(€): ">
+                                                                <Label styleClass="lblKursDetailsLinks"
+                                                                       text="Gebühr brutto(€): ">
                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
+                                                                        <Insets left="10.0"/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpGebuehrBrutto" promptText="z.B.  49.0" />
+                                                                <TextField fx:id="txInpGebuehrBrutto"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           promptText="z.B.  49.0"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="150.0" text="MWST (%):">
+                                                                <Label styleClass="lblKursDetailsLinks"
+                                                                       text="MWST (%):">
                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
+                                                                        <Insets left="10.0"/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpMwsProzent" promptText="z.B.  19.0" />
+                                                                <TextField fx:id="txInpMwsProzent"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           promptText="z.B.  19.0"/>
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -113,15 +136,18 @@
                                                     <children>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Status:" />
-                                                                <ComboBox fx:id="comboStatus" promptText="- Status wählen-">
+                                                                <Label styleClass="lblKursDetailsRechts"
+                                                                       text="Status:"/>
+                                                                <ComboBox fx:id="comboStatus"
+                                                                          styleClass="inpFeldKursDetails"
+                                                                          promptText="- Status wählen -">
                                                                     <padding>
-                                                                        <Insets left="12.0" />
+                                                                        <Insets left="12.0"/>
                                                                     </padding>
                                                                     <items>
                                                                         <FXCollections fx:factory="observableArrayList">
-                                                                            <String fx:value="Aktiv" />
-                                                                            <String fx:value="Geplant" />
+                                                                            <String fx:value="Aktiv"/>
+                                                                            <String fx:value="Geplant"/>
                                                                         </FXCollections>
                                                                     </items>
                                                                 </ComboBox>
@@ -129,46 +155,68 @@
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Zyklus:">
+                                                                <Label styleClass="lblKursDetailsRechts" text="Zyklus:">
                                                                     <HBox.margin>
-                                                                        <Insets />
+                                                                        <Insets/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpZyklus" promptText="z.B. 2" />
+                                                                <TextField fx:id="txInpZyklus"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           promptText="z.B. 2"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="End-Datum: " />
-                                                                <DatePicker fx:id="pickEndDatum" disable="true" editable="false" prefHeight="26.0" prefWidth="163.0" promptText="Wird kalkuliert!" />
+                                                                <Label styleClass="lblKursDetailsRechts"
+                                                                       text="End-Datum: "/>
+                                                                <DatePicker fx:id="pickEndDatum"
+                                                                            styleClass="inpFeldKursDetails"
+                                                                            disable="true" editable="false"
+                                                                            prefHeight="26.0"
+                                                                            promptText="Wird kalkuliert!"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Max. Teilnehmer: ">
+                                                                <Label styleClass="lblKursDetailsRechts"
+                                                                       text="Max. Teilnehmer: ">
                                                                     <HBox.margin>
-                                                                        <Insets />
+                                                                        <Insets/>
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpMaxTnZahl" promptText="z.B.  10" />
+                                                                <TextField fx:id="txInpMaxTnZahl"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           promptText="z.B.  10"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Freie Plätze:" />
-                                                                <TextField fx:id="txInpFreiePlaetze" disable="true" editable="false" promptText="automatisch berechnet" />
+                                                                <Label styleClass="lblKursDetailsRechts"
+                                                                       text="Freie Plätze:"/>
+                                                                <TextField fx:id="txInpFreiePlaetze"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           disable="true" editable="false"
+                                                                           promptText="automatisch berechnet"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="Gebühr netto(€):" />
-                                                                <TextField fx:id="txInpGebuehrNetto" disable="true" editable="false" promptText="automatisch berechnet" />
+                                                                <Label styleClass="lblKursDetailsRechts"
+                                                                       text="Gebühr netto(€):"/>
+                                                                <TextField fx:id="txInpGebuehrNetto"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           disable="true" editable="false"
+                                                                           promptText="automatisch berechnet"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
                                                             <children>
-                                                                <Label prefWidth="120.0" text="MWST (€):" />
-                                                                <TextField fx:id="txInpMwsEuro" disable="true" editable="false" promptText="automatisch berechnet" />
+                                                                <Label styleClass="lblKursDetailsRechts"
+                                                                       text="MWST (€):"/>
+                                                                <TextField fx:id="txInpMwsEuro"
+                                                                           styleClass="inpFeldKursDetails"
+                                                                           disable="true" editable="false"
+                                                                           promptText="automatisch berechnet"/>
                                                             </children>
                                                         </HBox>
                                                     </children>
@@ -178,9 +226,10 @@
                                         <VBox maxWidth="680.0">
                                             <children>
                                                 <Label text="Kursbeschreibung:" />
-                                                <TextArea fx:id="txtAreaKursBeschreibung" maxWidth="600.0" prefHeight="138.0" prefWidth="600.0" promptText="detailierte Infos zum Kurs">
+                                                <TextArea fx:id="txtAreaKursBeschreibung"
+                                                          promptText="detailierte Infos zum Kurs">
                                                     <VBox.margin>
-                                                        <Insets />
+                                                        <Insets/>
                                                     </VBox.margin>
                                                 </TextArea>
                                             </children>
@@ -231,10 +280,11 @@
                                     <children>
                                         <VBox alignment="TOP_CENTER" prefHeight="690.0" prefWidth="252.0">
                                             <children>
-                                                <Label styleClass="subheadline" text="Person" />
+                                                <Label styleClass="subheadline" text="Personen"/>
                                                 <TableView fx:id="tablePerson" prefHeight="264.0" prefWidth="252.0">
                                                     <columns>
-                                                        <TableColumn fx:id="personName" prefWidth="93.59991437196732" text="Vorame" />
+                                                        <TableColumn fx:id="personName" prefWidth="93.59991437196732"
+                                                                     text="Vorname"/>
                                                         <TableColumn fx:id="personNachName" prefWidth="159.20005798339844" text="Nachname" />
                                                     </columns>
                                                     <VBox.margin>
