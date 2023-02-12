@@ -111,7 +111,7 @@
                                                                 </Label>
                                                                 <TextField fx:id="txInpGebuehrBrutto"
                                                                            styleClass="inpFeldKursDetails"
-                                                                           promptText="z.B.  49.0"/>
+                                                                           promptText="49.0 oder 49,0 oder 49"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
@@ -124,7 +124,7 @@
                                                                 </Label>
                                                                 <TextField fx:id="txInpMwsProzent"
                                                                            styleClass="inpFeldKursDetails"
-                                                                           promptText="z.B.  19.0"/>
+                                                                           promptText="19.0 oder 19,0 oder 19"/>
                                                             </children>
                                                         </HBox>
                                                     </children>
