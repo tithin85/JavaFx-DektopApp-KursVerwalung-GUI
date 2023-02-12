@@ -91,7 +91,8 @@
                                                                         <Insets left="10.0" />
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpGebuehrBrutto" promptText="z.B.  49.0" />
+                                                                <TextField fx:id="txInpGebuehrBrutto"
+                                                                           promptText="49.0 oder 49 oder 49,0"/>
                                                             </children>
                                                         </HBox>
                                                         <HBox>
@@ -101,7 +102,8 @@
                                                                         <Insets left="10.0" />
                                                                     </HBox.margin>
                                                                 </Label>
-                                                                <TextField fx:id="txInpMwsProzent" promptText="z.B.  19.0" />
+                                                                <TextField fx:id="txInpMwsProzent"
+                                                                           promptText=" 19.0 oder 19 oder 19,0"/>
                                                             </children>
                                                         </HBox>
                                                     </children>

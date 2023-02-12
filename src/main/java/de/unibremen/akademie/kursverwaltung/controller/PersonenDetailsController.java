@@ -139,18 +139,21 @@ public class PersonenDetailsController {
         boolean disable = tableTeilnahmeKurse.getItems().contains(selectedItem) || tableInteresseKurse.getItems().contains(selectedItem);
         btnTeilnehmerKursRein.setDisable(selectedItem == null || disable);
         btnInteressentKursRein.setDisable(selectedItem == null || disable);
+
     }
 
     private void checkKursAusTeilnehmerButton() {
         selectedItem = tableTeilnahmeKurse.getSelectionModel().getSelectedItem();
         btnTeilnehmerKursRaus.setDisable(selectedItem == null);
         btnTeilnehmerZuInteressent.setDisable(selectedItem == null);
+
     }
 
     private void checkKursInteressentenButton() {
         selectedItem = tableInteresseKurse.getSelectionModel().getSelectedItem();
         btnInteressentZuTeilnehmer.setDisable(selectedItem == null);
         btnInteressentKursRaus.setDisable(selectedItem == null);
+
 
     }
 
@@ -179,6 +182,10 @@ public class PersonenDetailsController {
             try {
                 person = kvModel.getPersonen().addNewPerson(choiceAnrede.getValue().toString(), txInpTitel.getText(), txInpVorname.getText(),
                         txInpNachname.getText(), txInpStrasse.getText(), txInpPlz.getText(), txInpOrt.getText(), txInpEmail.getText(), txInpTelefon.getText());
+                if (person == null) {
+                    Meldung.eingabeFehler("Person schon existiert!!");
+                    return;
+                }
                 kvModel.getPkListe().addKurseAlsTeilnehmer(person, this.tableTeilnahmeKurse.getItems());
                 kvModel.getPkListe().addKurseAlsInteressent(person, this.tableInteresseKurse.getItems());
             } catch (Exception e) {
@@ -259,9 +266,10 @@ public class PersonenDetailsController {
 
     public void onClickTeilnehmerZuInteressent(ActionEvent actionEvent) {
 
-        System.out.println("Teilnehmer zu Interessent!");
+        //System.out.println("Teilnehmer zu Interessent!");
         tableInteresseKurse.getItems().add(tableTeilnahmeKurse.getSelectionModel().getSelectedItem());
         tableTeilnahmeKurse.getItems().removeAll(tableTeilnahmeKurse.getSelectionModel().getSelectedItems());
+        tableTeilnahmeKurse.getSelectionModel().clearSelection();
 
     }
 
@@ -269,16 +277,19 @@ public class PersonenDetailsController {
 
         tableTeilnahmeKurse.getItems().add(tableInteresseKurse.getSelectionModel().getSelectedItem());
         tableInteresseKurse.getItems().removeAll(tableInteresseKurse.getSelectionModel().getSelectedItems());
+        tableInteresseKurse.getSelectionModel().clearSelection();
 
     }
 
     public void onClickKursRausAusInteressent(ActionEvent actionEvent) {
         tableInteresseKurse.getItems().removeAll(tableInteresseKurse.getSelectionModel().getSelectedItem());
+        tableInteresseKurse.getSelectionModel().clearSelection();
 
     }
 
     public void onClickKursRausAusTeilnehmer(ActionEvent actionEvent) {
         tableTeilnahmeKurse.getItems().remove(tableTeilnahmeKurse.getSelectionModel().getSelectedItem());
+        tableTeilnahmeKurse.getSelectionModel().clearSelection();
     }
 
     public void onClickKursZuTeilnehmer(ActionEvent actionEvent) {

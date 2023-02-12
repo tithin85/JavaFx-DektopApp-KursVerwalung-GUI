@@ -39,6 +39,7 @@ public class PersonenListe {
 
     public Person addNewPerson(String anrede, String titel, String vorname, String nachname, String strasse, String plz, String ort, String email, String telefon) {
         Person person = new Person(anrede, titel, vorname, nachname, strasse, plz, ort, email, telefon);
+        if (getPersonenListe().contains(person)) return null;
         addPersonenZuListe(person);
         return person;
     }

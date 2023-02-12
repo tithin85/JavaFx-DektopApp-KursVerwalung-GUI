@@ -245,7 +245,7 @@ public class Kurs implements Externalizable {
         return gebuehrBrutto.get();
     }
 
-    public boolean setGebuehrBrutto(double gebuehrBrutto) {
+    public boolean setGebuehrBrutto(Double gebuehrBrutto) {
         if (gebuehrBrutto > 0) {
             if (this.gebuehrBrutto == null) {
                 this.gebuehrBrutto = new SimpleDoubleProperty(gebuehrBrutto);
@@ -263,7 +263,7 @@ public class Kurs implements Externalizable {
         return gebuehrNetto.get();
     }
 
-    public void setGebuehrNetto(double gebuehrNetto) {
+    public void setGebuehrNetto(Double gebuehrNetto) {
         this.gebuehrNetto = new SimpleDoubleProperty(gebuehrNetto);
     }
 
@@ -279,7 +279,7 @@ public class Kurs implements Externalizable {
         return mwstEuro.get();
     }
 
-    public void setMwstEuro(double mwstEuro) {
+    public void setMwstEuro(Double mwstEuro) {
         this.mwstEuro = new SimpleDoubleProperty(mwstEuro);
     }
 
@@ -309,7 +309,9 @@ public class Kurs implements Externalizable {
     }
 
     public String getKursBeschreibung() {
-        return kursBeschreibung.get();
+        if (kursBeschreibung != null)
+            return kursBeschreibung.get();
+        return "";
     }
 
     public boolean setKursBeschreibung(String kursBeschreibung) {

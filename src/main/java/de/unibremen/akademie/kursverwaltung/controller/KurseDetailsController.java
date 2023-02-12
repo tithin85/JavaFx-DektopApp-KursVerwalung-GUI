@@ -106,6 +106,10 @@ public class KurseDetailsController {
     private MainController mainCtrl;
     private Object selectedItem;
 
+    public static boolean checkIsDouble(String wert) {
+        return wert.matches("\\d+(\\.|,\\d+)?");
+    }
+
     @FXML
     public void initialize() {
         // Anzeige im deutschen Format, nutzt Klasse DatumFormatieren im Application-Ordner
@@ -124,6 +128,7 @@ public class KurseDetailsController {
         TableView.TableViewSelectionModel<Kurs> selectionModel =
                 tablePerson.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
+
 
         // TODO Kurs vom Teilnehmer in TeilnahmeKurse anzeigen!!
         colTeilnahmeKursePersonName.setCellValueFactory(new PropertyValueFactory<Person, String>("vorname"));
@@ -153,18 +158,13 @@ public class KurseDetailsController {
         boolean disable = tableTeilnehmerPerson.getItems().contains(selectedItem) || tableInteressentenPerson.getItems().contains(selectedItem);
         btnPersonAlsTeilnehmer.setDisable(selectedItem == null || disable);
         btnPersonAlsInteressent.setDisable(selectedItem == null || disable);
+
     }
 
     private void checkPersonAusTeilnehmerButton() {
         selectedItem = tableTeilnehmerPerson.getSelectionModel().getSelectedItem();
         btnTeilnehmerZuPerson.setDisable(selectedItem == null);
         btnTeilnehmerZuInteressent.setDisable(selectedItem == null);
-    }
-
-    private void checkPersonInteressentenButton() {
-        selectedItem = tableInteressentenPerson.getSelectionModel().getSelectedItem();
-        btnInteressentZuTeilnehmer.setDisable(selectedItem == null);
-        btnInteressentenZuPerson.setDisable(selectedItem == null);
 
     }
 
@@ -221,6 +221,28 @@ public class KurseDetailsController {
         }
     }
 
+    private void checkPersonInteressentenButton() {
+        selectedItem = tableInteressentenPerson.getSelectionModel().getSelectedItem();
+        btnInteressentZuTeilnehmer.setDisable(selectedItem == null);
+        btnInteressentenZuPerson.setDisable(selectedItem == null);
+
+
+    }
+
+    public void interessentenlist(ActionEvent actionEvent) {
+    }
+
+    public void onDatePickerAction(ActionEvent actionEvent) {
+    }
+
+    public void show() {
+        tabKurseDetails.getTabPane().getSelectionModel().select(tabKurseDetails);
+    }
+
+    public void init(MainController mainController) {
+        mainCtrl = mainController;
+    }
+
     public void anzeigeZumAendernKurs(Kurs kurs) {
         if (kurs != null) {
             txInpKursname.setText(kurs.getName());
@@ -233,6 +255,7 @@ public class KurseDetailsController {
             txInpMaxTnZahl.setText(String.valueOf(kurs.getMaxTnZahl()));
             txInpGebuehrBrutto.setText(String.valueOf(kurs.getGebuehrBrutto()));
             txInpMwsProzent.setText(String.valueOf(kurs.getMwstProzent()));
+            //if(kurs.getKursBeschreibung()!=null)
             txtAreaKursBeschreibung.setText(kurs.getKursBeschreibung());
             LocalDate datelocal = LocalDate.ofInstant(kurs.getEndeDatum().toInstant(), ZoneId.of("CET"));
             pickEndDatum.setValue(datelocal);
@@ -258,18 +281,9 @@ public class KurseDetailsController {
         }
     }
 
-    public void interessentenlist(ActionEvent actionEvent) {
-    }
-
-    public void onDatePickerAction(ActionEvent actionEvent) {
-    }
-
-    public void show() {
-        tabKurseDetails.getTabPane().getSelectionModel().select(tabKurseDetails);
-    }
-
-    public void init(MainController mainController) {
-        mainCtrl = mainController;
+    // checks fuer die Umwandlungen beim Auslesen und Zuweisen der GUI-Felder
+    public static boolean checkIsInt(String wert) {
+        return wert.matches("\\d+");
     }
 
     // FIXME: status leer gibt keinen Fehlermeldung
@@ -285,8 +299,11 @@ public class KurseDetailsController {
                 kvModel.aktuellerKurs.setStartDatum(Date.from(localDate.atStartOfDay(ZoneId.of("CET")).toInstant()));
                 kvModel.aktuellerKurs.setMinTnZahl((Integer.parseInt(txInpMinTnZahl.getText())));
                 kvModel.aktuellerKurs.setMaxTnZahl((Integer.parseInt(txInpMaxTnZahl.getText())));
-                kvModel.aktuellerKurs.setGebuehrBrutto((Double.parseDouble(txInpGebuehrBrutto.getText())));
-                kvModel.aktuellerKurs.setMwstProzent((Double.parseDouble(txInpMwsProzent.getText())));
+                double gebuhrB = (txInpGebuehrBrutto.getText().contains(",")) ? Double.parseDouble(txInpGebuehrBrutto.getText().replace(",", ".")) : Double.parseDouble(txInpGebuehrBrutto.getText());
+                double mwstPro = (txInpMwsProzent.getText().contains((","))) ? Double.parseDouble(txInpMwsProzent.getText().replace(",", ".")) : Double.parseDouble(txInpMwsProzent.getText());
+
+                kvModel.aktuellerKurs.setGebuehrBrutto(gebuhrB);
+                kvModel.aktuellerKurs.setMwstProzent(mwstPro);
                 kvModel.aktuellerKurs.setKursBeschreibung(txtAreaKursBeschreibung.getText());
                 kvModel.aktuellerKurs.setEndeDatum();
                 kvModel.aktuellerKurs.setGebuehrNetto();
@@ -315,6 +332,7 @@ public class KurseDetailsController {
                 //  TODO 04.02
 
                 kvModel.getPkListe().addPersonAlsTeilNehmer(kvModel.aktuellerKurs, this.tableTeilnehmerPerson.getItems());
+                kvModel.getPkListe().addPersonAlsInteressent(kvModel.aktuellerKurs, this.tableInteressentenPerson.getItems());
 
             } catch (Exception e) {
                 Meldung.eingabeFehler(e.getMessage());
@@ -325,8 +343,8 @@ public class KurseDetailsController {
             mainCtrl.fxmlPersonenDetailsController.tableKurse.refresh();
 
         } else {
-            int anzahl = 0, zykls = 0, minTn = 0, maxTn = 0;
-            double gebuhrB = 0, mwstPro = 0;
+            int anzahl, zykls, minTn, maxTn;
+            double gebuhrB, mwstPro;
             LocalDate localDate;
             Date startDate = null;
 
@@ -334,7 +352,7 @@ public class KurseDetailsController {
 
             String name = txInpKursname.getText();
             String kursBesch = txtAreaKursBeschreibung.getText();
-            String statusSTR = comboStatus.getSelectionModel().getSelectedItem().toString();
+            String statusSTR;
 
             try {
                 if (comboStatus.getSelectionModel().getSelectedIndex() == -1) {
@@ -362,10 +380,12 @@ public class KurseDetailsController {
 
                 if (!checkIsDouble(txInpGebuehrBrutto.getText()) ||
                         !checkIsDouble(txInpMwsProzent.getText())) {
-                    throw new IllegalArgumentException("Bitte nur Zahlen mit Nachkommastelle (1.0) eingeben!");
+                    throw new IllegalArgumentException("Bitte nur Zahlen  eingeben!");
                 } else {
-                    gebuhrB = Double.parseDouble(txInpGebuehrBrutto.getText());
-                    mwstPro = Double.parseDouble(txInpMwsProzent.getText());
+                    //if(txInpGebuehrBrutto.getText().contains(","))
+                    gebuhrB = (txInpGebuehrBrutto.getText().contains(",")) ? Double.parseDouble(txInpGebuehrBrutto.getText().replace(",", ".")) : Double.parseDouble(txInpGebuehrBrutto.getText());
+                    //if(txInpMwsProzent.getText().contains((",")))
+                    mwstPro = (txInpMwsProzent.getText().contains((","))) ? Double.parseDouble(txInpMwsProzent.getText().replace(",", ".")) : Double.parseDouble(txInpMwsProzent.getText());
                 }
 
                 if (!checkIsDate(String.valueOf(pickStartDatum.getValue()))) {
@@ -379,12 +399,12 @@ public class KurseDetailsController {
                 return;
             }
 
-            try {
-                kurs = kvModel.getKurse().addNewKurs(name, anzahl, zykls, startDate, minTn, maxTn, gebuhrB, mwstPro, kursBesch, statusSTR);
-            } catch (Exception e) {
-                Meldung.eingabeFehler(e.getMessage());
-                return;
-            }
+            // try {
+            kurs = kvModel.getKurse().addNewKurs(name, anzahl, zykls, startDate, minTn, maxTn, gebuhrB, mwstPro, kursBesch, statusSTR);
+            //} catch (Exception e) {
+            // Meldung.eingabeFehler(e.getMessage());
+            //return;
+            // }
 
             LocalDate datetolocal = LocalDate.ofInstant(kurs.getEndeDatum().toInstant(), ZoneId.of("CET"));
             pickEndDatum.setValue(datetolocal);
@@ -392,6 +412,8 @@ public class KurseDetailsController {
             txInpFreiePlaetze.setText(String.valueOf(kurs.getFreiePlaetze()));
             txInpMwsEuro.setText(String.valueOf(kurs.getMwstEuro()));
             txInpGebuehrNetto.setText(String.valueOf(kurs.getGebuehrNetto()));
+            kvModel.getPkListe().addPersonAlsTeilNehmer(kurs, this.tableTeilnehmerPerson.getItems());
+            kvModel.getPkListe().addPersonAlsInteressent(kurs, this.tableInteressentenPerson.getItems());
 
         }
         kvModel.aktuellerKurs = null;
@@ -416,15 +438,6 @@ public class KurseDetailsController {
 //            }
 //        }
 //        onClickAbbrechenKurs(actionEvent);
-    }
-
-    // checks fuer die Umwandlungen beim Auslesen und Zuweisen der GUI-Felder
-    public static boolean checkIsInt(String wert) {
-        return wert.matches("\\d+");
-    }
-
-    public static boolean checkIsDouble(String wert) {
-        return wert.matches("\\d+\\.\\d+");
     }
 
     public static boolean checkIsDate(String wert) {
@@ -521,22 +534,27 @@ public class KurseDetailsController {
         //System.out.println("Teilnehmer zu Interessent!");
         tableInteressentenPerson.getItems().add(tableTeilnehmerPerson.getSelectionModel().getSelectedItem());
         tableTeilnehmerPerson.getItems().removeAll(tableTeilnehmerPerson.getSelectionModel().getSelectedItems());
+        tableTeilnehmerPerson.getSelectionModel().clearSelection();
+
 
     }
 
     public void onClickInteressentZuTeilnehmer(ActionEvent actionEvent) {
         tableTeilnehmerPerson.getItems().add(tableInteressentenPerson.getSelectionModel().getSelectedItem());
         tableInteressentenPerson.getItems().removeAll(tableInteressentenPerson.getSelectionModel().getSelectedItems());
+        tableInteressentenPerson.getSelectionModel().clearSelection();
 
     }
 
     public void onClickPersonRausAusInteressent(ActionEvent actionEvent) {
         tableInteressentenPerson.getItems().removeAll(tableInteressentenPerson.getSelectionModel().getSelectedItem());
+        tableInteressentenPerson.getSelectionModel().clearSelection();
 
     }
 
     public void onClickPersonRausAusTeilnehmer(ActionEvent actionEvent) {
         tableTeilnehmerPerson.getItems().remove(tableTeilnehmerPerson.getSelectionModel().getSelectedItem());
+        tableTeilnehmerPerson.getSelectionModel().clearSelection();
     }
 
 

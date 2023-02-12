@@ -28,6 +28,7 @@ public class KursListe {
                            double gebuehrBrutto, double mwstProzent, String kursBeschreibung, String statusSTR) {
         Kurs kurs = new Kurs(name, anzahlTage, zyklus, startDatum, minTnZahl, maxTnZahl,
                 gebuehrBrutto, mwstProzent, kursBeschreibung, statusSTR);
+
         addKursZuListe(kurs);
 
         return kurs;

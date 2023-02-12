@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.function.Predicate;
 
 import static de.unibremen.akademie.kursverwaltung.domain.AnwendungsModel.kvModel;
 
@@ -74,7 +73,7 @@ public class KurseListeController {
     private Label lblDatumBis;
 
     private MainController mainCtrl;
-    private FilteredList<Kurs> filteredData;
+    //private FilteredList<Kurs> filteredData;
 
     public TableView<Kurs> getTableKurseListe() {
         return tableKurseListe;
@@ -170,7 +169,7 @@ public class KurseListeController {
                     return true;
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
-                if (kurs.getName().toLowerCase().contains(lowerCaseFilter)) {
+                if (kurs.getName().toLowerCase().startsWith(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
@@ -185,7 +184,7 @@ public class KurseListeController {
                     return true;
                 }
                 String lowerCaseFilter = newValue.toString().toLowerCase();
-                if (kurs.getStatus().toLowerCase().contains(lowerCaseFilter)) {
+                if (kurs.getStatus().toLowerCase().startsWith(lowerCaseFilter)) {
                     return true;
                 }
 
@@ -257,7 +256,7 @@ public class KurseListeController {
 
     @FXML
     void onClickBearbeitenButton(ActionEvent event) {
-        tableKurseListe.setItems(kvModel.getKurse().getKursListe());
+        // tableKurseListe.setItems(kvModel.getKurse().getKursListe());
         if (!tableKurseListe.getSelectionModel().isEmpty() && tableKurseListe.getSelectionModel().getSelectedItems().size() < 2) {
             kvModel.aktuellerKurs = tableKurseListe.getSelectionModel().getSelectedItem();
             //KvModel.aktuellerKurs = tableView.getSelectionModel().;
@@ -270,7 +269,7 @@ public class KurseListeController {
     }
 
 
-    public void searchButtonAction(ActionEvent actionEvent) {
+   /* public void searchButtonAction(ActionEvent actionEvent) {
 
         String searchText = txInpSuche.getText();
         Predicate<Kurs> predicate = new Predicate<Kurs>() {
@@ -294,7 +293,7 @@ public class KurseListeController {
 
 
     public void personAnlegenButtonAction(ActionEvent actionEvent) {
-    }
+    }*/
 
     public void init(MainController mainController) {
         mainCtrl = mainController;

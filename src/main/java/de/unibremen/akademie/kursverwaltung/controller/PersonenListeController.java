@@ -284,7 +284,7 @@ public class PersonenListeController implements Initializable {
         colPersonenListeInteressierteKurse.setCellValueFactory(person -> new ReadOnlyStringWrapper(kvModel.getPkListe().getKurseAlsInteressent(person.getValue()).toString()));
 
 
-        tablePersonenListe.setItems(kvModel.getPersonen().getPersonenListe());
+        //tablePersonenListe.setItems(kvModel.getPersonen().getPersonenListe());
 
         TableView.TableViewSelectionModel<Person> selectionModel = tablePersonenListe.getSelectionModel();
         selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
