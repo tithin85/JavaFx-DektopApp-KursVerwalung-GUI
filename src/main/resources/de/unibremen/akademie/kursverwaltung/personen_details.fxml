@@ -37,12 +37,13 @@
                                             <children>
                                                 <HBox alignment="CENTER_LEFT">
                                                     <children>
-                                                        <Label prefWidth="200.0" text="Anrede">
+                                                        <Label fx:id="lblPersonenDetailsAnrede"
+                                                               styleClass="lblPersonenDetails" text="Anrede">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <ChoiceBox fx:id="choiceAnrede" prefHeight="26.0" prefWidth="78.0">
+                                                        <ChoiceBox fx:id="choiceAnrede">
                                                             <tooltip>
                                                                 <Tooltip text="Frau, Herr, Divers oder Nix"/>
                                                             </tooltip>
@@ -54,12 +55,13 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT">
                                                     <children>
-                                                        <Label prefWidth="200.0" text="Titel">
+                                                        <Label styleClass="lblPersonenDetails" text="Titel">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txInpTitel" prefHeight="30.0" prefWidth="250.0">
+                                                        <TextField fx:id="txInpTitel"
+                                                                   styleClass="inpFeldPersonenDetails">
                                                             <tooltip>
                                                                 <Tooltip text="Dr. , Prof., Kaiserin, what ever"/>
                                                             </tooltip>
@@ -71,13 +73,13 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT">
                                                     <children>
-                                                        <Label prefHeight="30.0" prefWidth="200.0" text="Vorname *">
+                                                        <Label styleClass="lblPersonenDetails" text="Vorname *">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txInpVorname" maxWidth="250.0" prefHeight="30.0"
-                                                                   prefWidth="300.0">
+                                                        <TextField fx:id="txInpVorname"
+                                                                   styleClass="inpFeldPersonenDetails">
                                                             <tooltip>
                                                                 <Tooltip text="Bitte Vorname eingeben, Pflichtfeld!"/>
                                                             </tooltip>
@@ -89,13 +91,13 @@
                                                 </HBox>
                                                 <HBox alignment="CENTER_LEFT">
                                                     <children>
-                                                        <Label prefHeight="30.0" prefWidth="200.0" text="Nachname *">
+                                                        <Label styleClass="lblPersonenDetails" text="Nachname *">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txInpNachname" maxWidth="250.0" prefHeight="30.0"
-                                                                   prefWidth="300.0">
+                                                        <TextField fx:id="txInpNachname"
+                                                                   styleClass="inpFeldPersonenDetails">
                                                             <tooltip>
                                                                 <Tooltip text="Bitte Nachname eingeben, Pflichtfeld!"/>
                                                             </tooltip>
@@ -104,28 +106,29 @@
                                                 </HBox>
                                                 <HBox>
                                                     <children>
-                                                        <Label prefHeight="30.0" prefWidth="200.0" text="E-Mail *">
+                                                        <Label styleClass="lblPersonenDetails" text="E-Mail *">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txInpEmail" maxWidth="250.0" prefHeight="30.0"
-                                                                   prefWidth="300.0">
+                                                        <TextField fx:id="txInpEmail"
+                                                                   styleClass="inpFeldPersonenDetails">
                                                             <tooltip>
-                                                                <Tooltip text="Bitte Email-Adresse eingeben, Pflichtfeld!"/>
+                                                                <Tooltip
+                                                                        text="Bitte Email-Adresse eingeben, Pflichtfeld!"/>
                                                             </tooltip>
                                                         </TextField>
                                                     </children>
                                                 </HBox>
                                                 <HBox>
                                                     <children>
-                                                        <Label prefHeight="30.0" prefWidth="200.0" text="Tel-Nr.">
+                                                        <Label styleClass="lblPersonenDetails" text="Tel-Nr.">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txInpTelefon" maxWidth="250.0" prefHeight="30.0"
-                                                                   prefWidth="300.0">
+                                                        <TextField fx:id="txInpTelefon"
+                                                                   styleClass="inpFeldPersonenDetails">
                                                             <tooltip>
                                                                 <Tooltip text="Bitte Telefonnummer eingeben!"/>
                                                             </tooltip>
@@ -134,13 +137,14 @@
                                                 </HBox>
                                                 <HBox>
                                                     <children>
-                                                        <Label prefHeight="30.0" prefWidth="200.0" text="Strasse und Hausnummer">
+                                                        <Label styleClass="lblPersonenDetails"
+                                                               text="Strasse und Hausnummer">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txInpStrasse" maxWidth="250.0" prefHeight="30.0"
-                                                                   prefWidth="300.0">
+                                                        <TextField fx:id="txInpStrasse"
+                                                                   styleClass="inpFeldPersonenDetails">
                                                             <tooltip>
                                                                 <Tooltip text="Bitte Strasse mit Hausnummer eingeben!"/>
                                                             </tooltip>
@@ -149,13 +153,12 @@
                                                 </HBox>
                                                 <HBox>
                                                     <children>
-                                                        <Label prefHeight="30.0" prefWidth="200.0" text="PLZ">
+                                                        <Label styleClass="lblPersonenDetails" text="PLZ">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txInpPlz" maxWidth="250.0" prefHeight="30.0"
-                                                                   prefWidth="300.0">
+                                                        <TextField fx:id="txInpPlz" styleClass="inpFeldPersonenDetails">
                                                             <tooltip>
                                                                 <Tooltip text="Bitte Postleitzahl eingeben!"/>
                                                             </tooltip>
@@ -164,13 +167,12 @@
                                                 </HBox>
                                                 <HBox>
                                                     <children>
-                                                        <Label prefHeight="30.0" prefWidth="200.0" text="Ort">
+                                                        <Label styleClass="lblPersonenDetails" text="Ort">
                                                             <HBox.margin>
                                                                 <Insets left="10.0"/>
                                                             </HBox.margin>
                                                         </Label>
-                                                        <TextField fx:id="txInpOrt" maxWidth="250.0" prefHeight="30.0"
-                                                                   prefWidth="300.0">
+                                                        <TextField fx:id="txInpOrt" styleClass="inpFeldPersonenDetails">
                                                             <tooltip>
                                                                 <Tooltip text="Bitte einen Wohnort eingeben!"/>
                                                             </tooltip>
