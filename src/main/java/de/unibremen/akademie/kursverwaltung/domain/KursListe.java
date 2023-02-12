@@ -53,6 +53,7 @@ public class KursListe {
     public void setBisDatum(Object value) {
         Calendar calendar = Calendar.getInstance();
         bisDatum = parseDate(value);
+        if (bisDatum == null) return;
         calendar.setTime(bisDatum);
         calendar.add(Calendar.DATE, 1);
         bisDatum = calendar.getTime();
@@ -71,6 +72,7 @@ public class KursListe {
 
 
     public void alertDatum(Date ab, Date bis) {
+        if (ab == null || bis == null) return;
         if (ab.after(bis)) {
             Meldung.eingabeFehler("bis-Datum muss größer als ab-Datum!!!");
             return;

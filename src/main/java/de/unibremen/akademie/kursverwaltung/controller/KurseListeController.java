@@ -201,6 +201,7 @@ public class KurseListeController {
 
         pickDatumBis.valueProperty().addListener((observable, oldValue, newValue) -> {
             dateFilter.setBisDatum(newValue);
+
             dateFilter.alertDatum(dateFilter.getVonDatum(), dateFilter.getBisDatum());
             filteredData.setPredicate(kurs -> dateFilter.isBetween(kurs.getStartDatum()));
         });
@@ -304,7 +305,7 @@ public class KurseListeController {
         txInpSuche.clear();
         pickDatumAb.setValue(null);
         pickDatumBis.setValue(null);
-        comboStatusKurseListeSuche.setValue("");
+        comboStatusKurseListeSuche.setValue("Alle");
 
         // tableKurseListe.getItems();
     }
