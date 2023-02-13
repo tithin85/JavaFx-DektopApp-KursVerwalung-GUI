@@ -1,5 +1,3 @@
-
-
 #tabpane {
     -fx-tab-max-height: 4em;
     -fx-tab-min-height: 4em;
@@ -179,4 +177,9 @@
     -fx-pref-height: 2.5em;
     -fx-pref-width: 25em;
     -fx-max-width: 27em;
+}
+
+/* Farbe fuer das geblockte Datum beim Druck der Anwesenheitsliste */
+.pickAnwesenheitsDatum {
+    -fx-background-color: #ffc0cb;
 }
