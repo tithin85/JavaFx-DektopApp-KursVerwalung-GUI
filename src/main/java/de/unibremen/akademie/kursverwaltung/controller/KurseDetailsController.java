@@ -328,7 +328,7 @@ public class KurseDetailsController {
             }
             btnKursSpeichern.setText("Speichern");
             mainCtrl.fxmlKurseListeController.tableKurseListe.refresh();
-            mainCtrl.fxmlPersonenDetailsController.tableKurse.refresh();
+            mainCtrl.fxmlPersonenDetailsController.tblKurse.refresh();
 
         } else {
             int anzahlTage, zyklusTage, minTn, maxTn;

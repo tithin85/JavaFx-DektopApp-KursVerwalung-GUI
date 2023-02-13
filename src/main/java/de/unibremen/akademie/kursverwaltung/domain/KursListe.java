@@ -36,7 +36,7 @@ public class KursListe {
 
     private Date vonDatum;
     private Date bisDatum;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
     public Date getVonDatum() {
         return vonDatum;

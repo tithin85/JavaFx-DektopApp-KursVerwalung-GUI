@@ -221,7 +221,7 @@
                                         <VBox alignment="TOP_CENTER" prefHeight="690.0" prefWidth="323.0">
                                             <children>
                                                 <Label text="Kurse" styleClass="subheadline"/>
-                                                <TableView fx:id="tableKurse" prefHeight="264.0" prefWidth="252.0">
+                                                <TableView fx:id="tblKurse" prefHeight="264.0" prefWidth="252.0">
                                                     <columns>
                                                         <TableColumn fx:id="colKurseKursname" prefWidth="126.0"
                                                                      text="Kurs"/>
@@ -314,7 +314,7 @@
                                               spacing="20.0">
                                             <children>
                                                 <Label text="Teilnehmer" styleClass="subheadline"/>
-                                                <TableView fx:id="tableTeilnahmeKurse" prefHeight="200.0"
+                                                <TableView fx:id="tblTeilnahmeKurse" prefHeight="200.0"
                                                            prefWidth="200.0">
                                                     <columns>
                                                         <TableColumn fx:id="colTeilnahmeKurseKursname" prefWidth="126.0"
@@ -359,7 +359,7 @@
                                                     </children>
                                                 </HBox>
                                                 <Label text="Interessent" styleClass="subheadline"/>
-                                                <TableView fx:id="tableInteresseKurse" prefHeight="200.0"
+                                                <TableView fx:id="tblInteresseKurse" prefHeight="200.0"
                                                            prefWidth="200.0">
                                                     <columns>
                                                         <TableColumn fx:id="colInteresseKurseKursname" prefWidth="126.0"

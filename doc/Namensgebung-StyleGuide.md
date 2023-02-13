@@ -30,17 +30,17 @@ Namenkonvention
     Tab tabPersonenDetails;
     // Präfix: tab für Tab + Bezeichnung (in diesem Fall der Bezug zum entsprechenden FXML/Controller)
     
-    TableView tableKurse;
-    // Präfix: table für TableView + Bezeichnung
+    TableView tblKurse;
+    // Präfix: tbl für TableView + Bezeichnung
     
     TableColumn colKurseKursname;
     TableColumn colKurseStartDate;
     // Präfix: col für TableColumn + Namer der Tabelle, gefolgt vom Spaltennamen
     
-    TableView tableTeilnahmeKurse;
+    TableView tblTeilnahmeKurse;
     TableColumn colTeilnahmeKurseKursname;
     
-    TableView tableInteresseKurse;
+    TableView tblInteresseKurse;
     TableColumn colInteresseKurseKursname;
 
 ### FXML-Actions
