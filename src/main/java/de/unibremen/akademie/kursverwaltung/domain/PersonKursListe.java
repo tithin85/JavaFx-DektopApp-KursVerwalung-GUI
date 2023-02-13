@@ -8,32 +8,25 @@ import java.util.List;
 
 public class PersonKursListe {
 
-    public final ObservableList<PersonKurs> personKursList =
-            FXCollections.observableArrayList();
-
+    public final ObservableList<PersonKurs> personKursList = FXCollections.observableArrayList();
     // TODO: wird jetzt nicht unbedingt nur geADDed, sondern ggf. geändert. Sollte das besser in einer anderen Methode gemacht werden? (AxF)
 
     public Boolean addPersonInKurs(Person person, Kurs kurs, Boolean alsTeilnehmer) {
         for (PersonKurs personKurs : personKursList) {
-
             if (personKurs.getPerson().equals(person) && personKurs.getKurs().equals(kurs)) {
                 if (personKurs.istTeilnehmer() == alsTeilnehmer) {
                     return false;
-
                 } else {
-
                     if (alsTeilnehmer) {
                         if (kurs.getFreiePlaetze() == 0) {
                             Meldung.teilnehmerVoll("Keine freien Plätze mehr für " + kurs.getName());
                             return false;
                         }
-
                         kurs.setAktuelleTnZahl(kurs.getAktuelleTnZahl() + 1);
                         kurs.setFreiePlaetze();
                     } else {
                         kurs.setAktuelleTnZahl(kurs.getAktuelleTnZahl() - 1);
                         kurs.setFreiePlaetze();
-
                     }
                     personKurs.setTeilnehmer(alsTeilnehmer);
                     return true;
@@ -55,13 +48,6 @@ public class PersonKursListe {
         personKursList.add(personKurs);
         return true;
     }
-
-    /*public Boolean updatePersonInKurs(Person person, Kurs kurs, Boolean alsTeilnehmer){
-        if(person.equals(personKursList)){
-
-        }
-        return true;
-    }*/
 
     public Boolean addPersonInKursAlsInteressent(Person person, Kurs kurs) {
         return addPersonInKurs(person, kurs, false);
@@ -112,7 +98,6 @@ public class PersonKursListe {
         */
     }
 
-
     public List<Person> getPersonen(Kurs kurs, boolean alsTeilnehmer) {
         // TODO: Ist kürzer, aber auch besser?
         return getKursPersonen(kurs, alsTeilnehmer)
@@ -160,8 +145,6 @@ public class PersonKursListe {
         return listkurs;
     }
 
-
-
     public List<String> getKurseAlsTeilnehmer(Person person) {
         return getKurseNames(person, true);
     }
@@ -173,6 +156,7 @@ public class PersonKursListe {
     public List<Person> getPersonAlsTeilnehmer(Kurs kurs) {
         return getPersonen(kurs, true);
     }
+
     public List<String> getPersonNameAlsTeilnehmer(Kurs kurs) {
         return getPersonName(kurs, true);
     }
@@ -180,6 +164,7 @@ public class PersonKursListe {
     public List<Person> getPersonAlsInteressent(Kurs kurs) {
         return getPersonen(kurs, false);
     }
+
     public List<String> getPersonNameAlsInteressent(Kurs kurs) {
         return getPersonName(kurs, false);
     }
@@ -189,6 +174,7 @@ public class PersonKursListe {
             addPersonInKurs(person, kurs, alsTeilnehmer);
         }
     }
+
     public void addPersonen(Kurs kurs, List<Person> liste, boolean alsTeilnehmer) {
         for (var person : liste) {
             addPersonInKurs(person, kurs, alsTeilnehmer);
@@ -231,21 +217,6 @@ public class PersonKursListe {
         addKurse(person, teilnehmerliste, true);
     }
 
-    /*public void addPersonAlsTeilnehmer(Kurs kurs, List<Person> teilnehmerliste) {
-        List<PersonKurs> list = getKursePerson(kurs, true);
-        for (PersonKurs k : list) {
-            if (!teilnehmerliste.contains(k.getKurs())) {
-                removeKurse(kurs, k.getKurs(), true);
-                k.getKurs().setAktuelleTnZahl(k.getKurs().getAktuelleTnZahl() - 1);
-                k.getKurs().setFreiePlaetze();
-            }
-        }
-        if (teilnehmerliste == null) {
-            removeAllKurseAlsTeilnehmer(kurs);
-        }
-        addPersonen(kurs, teilnehmerliste, true);
-    }*/
-
     public void addKurseAlsInteressent(Person person, List<Kurs> interessentenliste) {
         addKurse(person, interessentenliste, false);
     }
@@ -268,7 +239,6 @@ public class PersonKursListe {
         removeAllPersonen(aktuelleKurs, true);
     }
 
-
     public void removeAllKurse(Person p, boolean alsTeilnehmer) {
         List<PersonKurs> list = getPersonKurse(p, alsTeilnehmer);
         for (PersonKurs k : list) {
@@ -288,7 +258,6 @@ public class PersonKursListe {
         for (PersonKurs k : list) {
             if (k.getKurs().equals(kurs)) {
                 personKursList.remove(k);
-
             }
         }
     }
@@ -300,7 +269,6 @@ public class PersonKursListe {
                 personKursList.remove(k);
             }
         }
-
     }
 
     public void removeAll(Kurs kurs) {
@@ -314,7 +282,6 @@ public class PersonKursListe {
         }
     }
 
-
     public int size() {
         if (personKursList == null) {
             throw new NullPointerException("List is null");
@@ -324,7 +291,6 @@ public class PersonKursListe {
             size++;
         }
         return size;
-
     }
 
     @Override

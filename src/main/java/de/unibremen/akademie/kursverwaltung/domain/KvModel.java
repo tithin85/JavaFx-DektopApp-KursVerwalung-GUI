@@ -14,7 +14,6 @@ public class KvModel {
     private final PersonenListe personen = new PersonenListe();
     private final KursListe kurse = new KursListe();
 
-
     /**
      * Instantiates a new Kv model.
      */
@@ -48,7 +47,6 @@ public class KvModel {
         return pkListe;
     }
 
-
     /**
      * Load.
      *
@@ -63,7 +61,6 @@ public class KvModel {
             personen.getPersonenListe().addAll((ArrayList<Person>) input.readObject());
             kurse.getKursListe().addAll((ArrayList<Kurs>) input.readObject());
             pkListe.personKursList.addAll((ArrayList<PersonKurs>) input.readObject());
-
             input.close();
         } catch (FileNotFoundException e) {
             System.err.print("Die Datei zum Lesen der Daten kann nicht gefunden werden! Fehlermeldung: ");
@@ -75,11 +72,9 @@ public class KvModel {
             System.err.print("Falsche Klasse in der Datei! Fehlermeldung: ");
             System.err.println(e.getMessage());
         }
-
         //Falls keine Daten nach dem Laden vorhanden sind, werden Daten automatisch angelegt
         standardDatenErstellen();
     }
-
 
     /**
      * Save.
@@ -99,7 +94,6 @@ public class KvModel {
             output.writeObject(new ArrayList<>(personen.getPersonenListe()));
             output.writeObject(new ArrayList<>(kurse.getKursListe()));
             output.writeObject(new ArrayList<>(pkListe.personKursList));
-
             output.close();
             System.out.println("Alle Daten-Objekte wurden gespeichert! [" + speicherPfad + speicherDatei + "]");
         } catch (FileNotFoundException e) {
@@ -119,7 +113,6 @@ public class KvModel {
             personen.addNewPerson("Divers", "", "Cosma", "Shiva", "Aurenallee 666", "21165", "Hamburg", "cosma_shiva@in-den-wolken.business", "040 666666666");
             personen.addNewPerson("", "", "Manfred", "Schneider", "Kohlweg 17", "10978", "Berlin", "ms@hotmail.com", "+49 162 7898 56 45");
             personen.addNewPerson("Frau", "Freifrau", "Julia", "von Bayern", "Wiesnplatz 96f", "84569", "München", "freifrau_jvb@brauhaus.bayern", "00 170 235 45 81");
-
             System.out.println("Person-Standarddaten wurde geladen!");
         }
         if (kurse.getKursListe().size() <= 0) {
@@ -127,8 +120,7 @@ public class KvModel {
             kurse.addNewKurs("Angular FE", 21, 3, new Date(1901232000000L), 2, 8, 849.00, 19.0, "Angular für Frontend-Entwickler", "Aktiv");
             kurse.addNewKurs("Arduino", 5, 5, new Date(1899763200000L), 10, 12, 79.00, 19.0, "Arduino für Kids und Großeltern", "geplant");
             kurse.addNewKurs("Deep S9", 32, 4, new Date(1911772800000L), 8, 9, 1275.00, 19.0, "Deep learning mit Python", "Abgesagt");
-            kurse.addNewKurs("Web-Start", 7, 3, new Date(1920240000000L), 12, 15, 249.00, 19.0, "HTML und CSS zum Frühstück", "Aktiv");
-            // startdatum 31.01.2023
+            kurse.addNewKurs("Web-Start", 7, 3, new Date(1920240000000L), 12, 15, 249.00, 19.0, "HTML und CSS zum Frühstück", "Aktiv");            // startdatum 31.01.2023
             // kurse.addNewKurs("Web-Profi", 21, 3, new Date(1675123200000L), 1, 10, 299.00, 19.0, "HTML und CSS wie im Schlaf", "Aktiv");
             System.out.println("Kurs-Standarddaten wurde geladen!");
         }
@@ -139,7 +131,6 @@ public class KvModel {
             pkListe.addPersonInKursAlsTeilnehmer(personen.getPersonVonPersonenListe(1), kurse.getKursVonKursListe(1));
             pkListe.addPersonInKursAlsTeilnehmer(personen.getPersonVonPersonenListe(2), kurse.getKursVonKursListe(1));
             pkListe.addPersonInKursAlsTeilnehmer(personen.getPersonVonPersonenListe(3), kurse.getKursVonKursListe(1));
-
             System.out.println("PersonKursList-Standarddaten wurde geladen!");
         }
     }
@@ -159,7 +150,6 @@ public class KvModel {
             Meldung.loeschFehler(e.getMessage());
             return;
         }
-
         if (!pkListe.getKurseAlsInteressent(p).isEmpty()) {
             pkListe.removeAllKurseAlsInteressent(p);
         }
@@ -183,20 +173,14 @@ public class KvModel {
                 String details = "";
                 for (Person person : list) {
                     details = details + person.getNachname() + " " + person.getVorname() + " " + person.getEmail() + '\n';
-
                 }
-
-                Meldung.eingabeFehler(kurs.getName() + " enthält noch teilnehmer bitte die Personen Informieren " + '\n' + details);
+                Meldung.eingabeFehler(kurs.getName() + " enthält noch Teilnehmer bitte die Personen Informieren " + '\n' + details);
                 kurse.getKursListe().remove(kurs);
                 pkListe.removeAll(kurs);
-
             } else {
                 kurse.getKursListe().remove(kurs);
                 pkListe.removeAll(kurs);
-
             }
-
         } else Meldung.eingabeFehler(kurs.getName() + " darf nicht gelöscht werden");
     }
-
 }

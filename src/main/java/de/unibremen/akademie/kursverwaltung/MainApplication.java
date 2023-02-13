@@ -56,17 +56,13 @@ public class MainApplication extends Application {
     public static void main(String[] args) throws IOException {
         //model aus Datei laden
         kvModel.load();
-
         //Application (GUI) starten
         launch();
-
         //model beim Beenden in Datei speichern
         kvModel.save();
         //kvModel.save("src/main/resources/de/unibremen/akademie/kursverwaltung/backupsaveddata/" + System.currentTimeMillis());
-
         // PDFs beim Beenden erzeugen
         new CreatePdf().createPersonenListePdf();
         new CreatePdf().createKurseListePdf();
-
     }
 }

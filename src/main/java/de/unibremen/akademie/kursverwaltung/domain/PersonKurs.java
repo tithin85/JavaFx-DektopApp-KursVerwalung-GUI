@@ -41,7 +41,6 @@ public class PersonKurs implements Externalizable {
 
     @Override
     public void writeExternal(ObjectOutput stream) throws IOException {
-
         stream.writeObject(getPerson());
         stream.writeObject(getKurs());
         stream.writeUTF(String.valueOf(istTeilnehmer()));

@@ -14,9 +14,6 @@ import java.util.Objects;
  */
 public class Person implements Externalizable {
 
-
-    //static final long serialVersionUID = 3619323214958673905L;
-
     private SimpleStringProperty anrede;
     private SimpleStringProperty titel;
     private SimpleStringProperty nachname;
@@ -31,7 +28,6 @@ public class Person implements Externalizable {
     public String getCSVTRENNER() {
         return CSVTRENNER;
     }
-
 
     public Person() {
     }
@@ -263,17 +259,16 @@ public class Person implements Externalizable {
      */
 
     public String toCsv() {
-        return anrede.getValue() + CSVTRENNER +
-                titel.getValue() + CSVTRENNER +
-                vorname.getValue() + CSVTRENNER +
-                nachname.getValue() + CSVTRENNER +
-                strasse.getValue() + CSVTRENNER +
-                plz.getValue() + CSVTRENNER +
-                ort.getValue() + CSVTRENNER +
-                email.getValue() + CSVTRENNER +
+        return anrede.getValue() + getCSVTRENNER() +
+                titel.getValue() + getCSVTRENNER() +
+                vorname.getValue() + getCSVTRENNER() +
+                nachname.getValue() + getCSVTRENNER() +
+                strasse.getValue() + getCSVTRENNER() +
+                plz.getValue() + getCSVTRENNER() +
+                ort.getValue() + getCSVTRENNER() +
+                email.getValue() + getCSVTRENNER() +
                 telefon.getValue();
     }
-
 
     /**
      * writeExternal methode ist Externalizable - Interface
@@ -314,8 +309,5 @@ public class Person implements Externalizable {
         setOrt(in.readUTF());
         setEmail(in.readUTF());
         setTelefon(in.readUTF());
-        //System.out.println(this);
     }
-
-
 }
