@@ -195,7 +195,6 @@ public class KurseDetailsController {
         // umstellung auf StatusVariable?? (siehe personenDetails)
         //kvModel.aktuellerKurs = null;
 
-
         if (kvModel.aktuellerKurs != null) {
             Tab plTab = mainCtrl.fxmlKurseListeController.tabKurseListe;
             plTab.getTabPane().getSelectionModel().select(plTab);
@@ -253,6 +252,7 @@ public class KurseDetailsController {
             txInpMwsEuro.setText(String.valueOf(kurs.getMwstEuro()));
             txInpGebuehrNetto.setText(String.valueOf(kurs.getGebuehrNetto()));
             btnKursSpeichern.setText("Update");
+            //h-boxen für Pdf und Csv anzeigen, wenn der Kurs Teilnehmer hat
             if (hatKursTeilnehmer()) {
                 // Auswahldatum auf die Dauer des Kurses einschränken
                 pickAnwesenheitsDatumSetzen(pickStartDatum.getValue(), pickEndDatum.getValue());
@@ -288,11 +288,10 @@ public class KurseDetailsController {
                 kvModel.aktuellerKurs.setStartDatum(Date.from(localDate.atStartOfDay(ZoneId.of("CET")).toInstant()));
                 kvModel.aktuellerKurs.setMinTnZahl((Integer.parseInt(txInpMinTnZahl.getText())));
                 kvModel.aktuellerKurs.setMaxTnZahl((Integer.parseInt(txInpMaxTnZahl.getText())));
-                double gebuhrB = (txInpGebuehrBrutto.getText().contains(",")) ? parseDouble(txInpGebuehrBrutto.getText().replace(",", ".")) : parseDouble(txInpGebuehrBrutto.getText());
-                double mwstPro = (txInpMwsProzent.getText().contains((","))) ? parseDouble(txInpMwsProzent.getText().replace(",", ".")) : parseDouble(txInpMwsProzent.getText());
-
-                kvModel.aktuellerKurs.setGebuehrBrutto(gebuhrB);
-                kvModel.aktuellerKurs.setMwstProzent(mwstPro);
+                double gebuehrBrutto = (txInpGebuehrBrutto.getText().contains(",")) ? parseDouble(txInpGebuehrBrutto.getText().replace(",", ".")) : parseDouble(txInpGebuehrBrutto.getText());
+                double mwstProzent = (txInpMwsProzent.getText().contains((","))) ? parseDouble(txInpMwsProzent.getText().replace(",", ".")) : parseDouble(txInpMwsProzent.getText());
+                kvModel.aktuellerKurs.setGebuehrBrutto(gebuehrBrutto);
+                kvModel.aktuellerKurs.setMwstProzent(mwstProzent);
                 kvModel.aktuellerKurs.setKursBeschreibung(txAreaKursBeschreibung.getText());
                 kvModel.aktuellerKurs.setEndeDatum();
                 kvModel.aktuellerKurs.setGebuehrNetto();
@@ -332,22 +331,22 @@ public class KurseDetailsController {
             mainCtrl.fxmlPersonenDetailsController.tableKurse.refresh();
 
         } else {
-            int anzahl, zykls, minTn, maxTn;
+            int anzahlTage, zyklusTage, minTn, maxTn;
             double gebuehrBrutto, mwstProzent;
             LocalDate localDate;
             Date startDate = null;
 
             // Kurs kurs;
 
-            String name = txInpKursname.getText();
-            String kursBesch = txAreaKursBeschreibung.getText();
-            String statusSTR;
+            String kursName = txInpKursname.getText();
+            String kursBeschreibung = txAreaKursBeschreibung.getText();
+            String kursStatus;
 
             try {
                 if (comboStatus.getSelectionModel().getSelectedIndex() == -1) {
                     throw new IllegalArgumentException("Bitte einen Kurs-Status eingeben");
                 } else {
-                    statusSTR = comboStatus.getSelectionModel().getSelectedItem().toString();
+                    kursStatus = comboStatus.getSelectionModel().getSelectedItem().toString();
                 }
             } catch (Exception e) {
                 Meldung.eingabeFehler(e.getMessage());
@@ -361,8 +360,8 @@ public class KurseDetailsController {
                         !checkIsInt(txInpMaxTnZahl.getText())) {
                     throw new IllegalArgumentException("Bitte nur ganze Zahlen (1) eingeben!");
                 } else {
-                    anzahl = Integer.parseInt(txInpAnzahlTage.getText());
-                    zykls = Integer.parseInt(txInpZyklus.getText());
+                    anzahlTage = Integer.parseInt(txInpAnzahlTage.getText());
+                    zyklusTage = Integer.parseInt(txInpZyklus.getText());
                     minTn = Integer.parseInt(txInpMinTnZahl.getText());
                     maxTn = Integer.parseInt(txInpMaxTnZahl.getText());
                 }
@@ -387,7 +386,7 @@ public class KurseDetailsController {
             }
 
             // try {
-            kurs = kvModel.getKurse().addNewKurs(name, anzahl, zykls, startDate, minTn, maxTn, gebuehrBrutto, mwstProzent, kursBesch, statusSTR);
+            kurs = kvModel.getKurse().addNewKurs(kursName, anzahlTage, zyklusTage, startDate, minTn, maxTn, gebuehrBrutto, mwstProzent, kursBeschreibung, kursStatus);
             //} catch (Exception e) {
             // Meldung.eingabeFehler(e.getMessage());
             //return;
@@ -443,7 +442,7 @@ public class KurseDetailsController {
     public boolean hatKursTeilnehmer() {
         int teilnehmendePersonen = 0;
         for (PersonKurs personKurs : kvModel.getPkListe().personKursList) {
-            if (personKurs.getKurs().getName().equals(kvModel.aktuellerKurs.getName()) && personKurs.isTeilnehmer()) {
+            if (personKurs.getKurs().getName().equals(kvModel.aktuellerKurs.getName()) && personKurs.istTeilnehmer()) {
                 Person person = personKurs.getPerson();
                 teilnehmendePersonen++;
             }

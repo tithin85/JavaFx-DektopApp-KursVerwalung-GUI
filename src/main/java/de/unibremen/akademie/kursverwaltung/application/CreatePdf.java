@@ -180,7 +180,7 @@ public class CreatePdf {
         // Anzahl der teilnehmenden Personen ermitteln
         int teilnehmendePersonen = 0;
         for (PersonKurs personKurs : kvModel.getPkListe().personKursList) {
-            if (personKurs.getKurs().getName().equals(kursName) && personKurs.isTeilnehmer()) {
+            if (personKurs.getKurs().getName().equals(kursName) && personKurs.istTeilnehmer()) {
                 teilnehmendePersonen++;
             }
         }
@@ -201,7 +201,7 @@ public class CreatePdf {
             tabellenHeader(table, headline, seitenGesamt);
 
             for (PersonKurs personKurs : kvModel.getPkListe().personKursList) {
-                if (personKurs.getKurs().getName().equals(kursName) && personKurs.isTeilnehmer()) {
+                if (personKurs.getKurs().getName().equals(kursName) && personKurs.istTeilnehmer()) {
                     Person person = personKurs.getPerson();
                     counterListenEintraege++;
                     if (counterListenEintraege <= anzahlTeilnehmerJeSeite) {

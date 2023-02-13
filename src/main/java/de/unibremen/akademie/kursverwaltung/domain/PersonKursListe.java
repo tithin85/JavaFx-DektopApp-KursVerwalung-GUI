@@ -17,7 +17,7 @@ public class PersonKursListe {
         for (PersonKurs personKurs : personKursList) {
 
             if (personKurs.getPerson().equals(person) && personKurs.getKurs().equals(kurs)) {
-                if (personKurs.isTeilnehmer() == alsTeilnehmer) {
+                if (personKurs.istTeilnehmer() == alsTeilnehmer) {
                     return false;
 
                 } else {
@@ -127,7 +127,7 @@ public class PersonKursListe {
         List<PersonKurs> listperson = new ArrayList<>();
 
         for (PersonKurs personKurs : personKursList) {
-            if (personKurs.getKurs().equals(kurs) && personKurs.isTeilnehmer() == alsTeilnehmer) {
+            if (personKurs.getKurs().equals(kurs) && personKurs.istTeilnehmer() == alsTeilnehmer) {
                 listperson.add(personKurs);
             }
         }
@@ -140,7 +140,7 @@ public class PersonKursListe {
         List<PersonKurs> listkurs = new ArrayList<>();
 
         for (PersonKurs personKurs : personKursList) {
-            if (personKurs.getKurs().equals(kurs) && personKurs.isTeilnehmer() == alsTeilnehmer) {
+            if (personKurs.getKurs().equals(kurs) && personKurs.istTeilnehmer() == alsTeilnehmer) {
                 listkurs.add(personKurs);
             }
         }
@@ -153,7 +153,7 @@ public class PersonKursListe {
         List<PersonKurs> listkurs = new ArrayList<>();
 
         for (PersonKurs personKurs : personKursList) {
-            if (personKurs.getPerson().equals(person) && personKurs.isTeilnehmer() == alsTeilnehmer) {
+            if (personKurs.getPerson().equals(person) && personKurs.istTeilnehmer() == alsTeilnehmer) {
                 listkurs.add(personKurs);
             }
         }
