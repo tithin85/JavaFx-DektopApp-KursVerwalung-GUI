@@ -128,7 +128,7 @@ public class KurseDetailsController {
 
         TableView.TableViewSelectionModel<Kurs> selectionModel =
                 tblPerson.getSelectionModel();
-        selectionModel.setSelectionMode(SelectionMode.MULTIPLE);
+        selectionModel.setSelectionMode(SelectionMode.SINGLE);
 
 
         // TODO Kurs vom Teilnehmer in TeilnahmeKurse anzeigen!!
