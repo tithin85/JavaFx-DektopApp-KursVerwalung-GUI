@@ -407,7 +407,7 @@ public class KurseDetailsController {
         Tab klTab = mainCtrl.fxmlKurseListeController.tabKurseListe;
 
         mainCtrl.fxmlKurseListeController.tableKurseListe.refresh();
-        mainCtrl.fxmlPersonenListeController.tablePersonenListe.refresh();
+        mainCtrl.fxmlPersonenListeController.tblPersonenListe.refresh();
 
 
         klTab.getTabPane().getSelectionModel().select(klTab);

@@ -199,13 +199,13 @@ public class PersonenDetailsController {
         kvModel.aktuellePerson = null;
         Tab plTab = mainCtrl.fxmlPersonenListeController.tabPersonenListe;
         //plTab.getTabPane().getSelectionModel().select(plTab);
-        mainCtrl.fxmlPersonenListeController.tablePersonenListe.refresh();
+        mainCtrl.fxmlPersonenListeController.tblPersonenListe.refresh();
         mainCtrl.fxmlKurseListeController.tableKurseListe.refresh();
 
         if (PersonenDetailsController.zurueckPersonenliste) {
             plTab.getTabPane().getSelectionModel().select(plTab);
-            mainCtrl.fxmlPersonenListeController.tablePersonenListe.getSelectionModel().clearSelection();
-            mainCtrl.fxmlPersonenListeController.tablePersonenListe.getSelectionModel().select(person);
+            mainCtrl.fxmlPersonenListeController.tblPersonenListe.getSelectionModel().clearSelection();
+            mainCtrl.fxmlPersonenListeController.tblPersonenListe.getSelectionModel().select(person);
         }
     }
 

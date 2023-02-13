@@ -65,7 +65,7 @@
                     </bottom>
 
                     <center>
-                        <TableView fx:id="tablePersonenListe" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tblPersonenListe" BorderPane.alignment="CENTER">
                             <columns>
 
                                 <TableColumn fx:id="colPersonenListeAnrede" prefWidth="70.0" text="Anrede"/>
