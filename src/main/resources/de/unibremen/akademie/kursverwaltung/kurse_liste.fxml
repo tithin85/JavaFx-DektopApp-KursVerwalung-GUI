@@ -40,15 +40,15 @@
                                                 <Insets left="10.0" />
                                             </HBox.margin>
                                         </Label>
-                                        <DatePicker fx:id="pickDatumAb" onAction="#abDatselectDate">
+                                        <DatePicker fx:id="pickAbDatum" onAction="#abDatselectDate">
                                             <HBox.margin>
                                                 <Insets left="10.0" />
                                             </HBox.margin>
                                         </DatePicker>
-                                        <Label fx:id="lblDatumBis" layoutX="328.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="Bis Datum:" />
-                                        <DatePicker fx:id="pickDatumBis" layoutX="460.0" layoutY="10.0" onAction="#bisDatSelectDate" />
+                                        <Label fx:id="lblBisDatum" layoutX="328.0" layoutY="10.0" prefHeight="18.0" prefWidth="81.0" text="Bis Datum:" />
+                                        <DatePicker fx:id="pickBisDatum" layoutX="460.0" layoutY="10.0" onAction="#bisDatSelectDate" />
                                         <Label prefWidth="120.0" text="Status:" />
-                                        <ComboBox fx:id="comboStatusKurseListeSuche" onAction="#onClickcomboStatusKurseListeSelect" prefWidth="150.0" promptText="- Status wählen -">
+                                        <ComboBox fx:id="comboKurseListeStatusSuche" onAction="#onClickcomboStatusKurseListeSelect" prefWidth="150.0" promptText="- Status wählen -">
 
                                             <items>
                                                 <FXCollections fx:factory="observableArrayList">
@@ -74,16 +74,16 @@
                         </VBox>
                     </top>
                     <center>
-                        <TableView fx:id="tableKurseListe" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tblKurseListe" BorderPane.alignment="CENTER">
                             <columns>
-                                <TableColumn fx:id="colKursname" prefWidth="100" text="Kursname"/>
-                                <TableColumn fx:id="colStart_Datum" prefWidth="100" text="Startdatum"/>
-                                <TableColumn fx:id="colEnd_Datum" prefWidth="100" text="Enddatum"/>
-                                <TableColumn fx:id="colAnzhl_Frei_plaetze" prefWidth="100" text="Anzahl freie Plätze"/>
-                                <TableColumn fx:id="colAnzahl_Teilnehmer" prefWidth="100" text="Anzahl Teilnehmer"/>
-                                <TableColumn fx:id="colStatus" text="Status"/>
-                                <TableColumn fx:id="colKursListTeilnehmerAnKurs" prefWidth="217.0" text="Teilnehmer"/>
-                                <TableColumn fx:id="colKursListInteressentenAnKurs" prefWidth="144.7999267578125"
+                                <TableColumn fx:id="colKurseListeKursname" prefWidth="100" text="Kursname"/>
+                                <TableColumn fx:id="colKurseListeStartDatum" prefWidth="100" text="Startdatum"/>
+                                <TableColumn fx:id="colKurseListeEndDatum" prefWidth="100" text="Enddatum"/>
+                                <TableColumn fx:id="colKurseListeFreiePlaetze" prefWidth="100" text="Anzahl freie Plätze"/>
+                                <TableColumn fx:id="colKurseListeAnzahlTeilnehmer" prefWidth="100" text="Anzahl Teilnehmer"/>
+                                <TableColumn fx:id="colKurseListeStatus" text="Status"/>
+                                <TableColumn fx:id="colKurseListeTeilnehmerAnKurs" prefWidth="217.0" text="Teilnehmer"/>
+                                <TableColumn fx:id="colKurseListeInteressentenAnKurs" prefWidth="144.7999267578125"
                                              text="Interessent"/>
                             </columns>
                             <columnResizePolicy>

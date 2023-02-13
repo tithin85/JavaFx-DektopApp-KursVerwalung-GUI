@@ -327,7 +327,7 @@ public class KurseDetailsController {
                 return;
             }
             btnKursSpeichern.setText("Speichern");
-            mainCtrl.fxmlKurseListeController.tableKurseListe.refresh();
+            mainCtrl.fxmlKurseListeController.tblKurseListe.refresh();
             mainCtrl.fxmlPersonenDetailsController.tblKurse.refresh();
 
         } else {
@@ -406,13 +406,13 @@ public class KurseDetailsController {
 
         Tab klTab = mainCtrl.fxmlKurseListeController.tabKurseListe;
 
-        mainCtrl.fxmlKurseListeController.tableKurseListe.refresh();
+        mainCtrl.fxmlKurseListeController.tblKurseListe.refresh();
         mainCtrl.fxmlPersonenListeController.tblPersonenListe.refresh();
 
 
         klTab.getTabPane().getSelectionModel().select(klTab);
-        mainCtrl.fxmlKurseListeController.tableKurseListe.getSelectionModel().clearSelection();
-        mainCtrl.fxmlKurseListeController.tableKurseListe.getSelectionModel().select(kurs);
+        mainCtrl.fxmlKurseListeController.tblKurseListe.getSelectionModel().clearSelection();
+        mainCtrl.fxmlKurseListeController.tblKurseListe.getSelectionModel().select(kurs);
     }
 
     public static boolean checkIsDate(String wert) {

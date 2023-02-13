@@ -200,7 +200,7 @@ public class PersonenDetailsController {
         Tab plTab = mainCtrl.fxmlPersonenListeController.tabPersonenListe;
         //plTab.getTabPane().getSelectionModel().select(plTab);
         mainCtrl.fxmlPersonenListeController.tblPersonenListe.refresh();
-        mainCtrl.fxmlKurseListeController.tableKurseListe.refresh();
+        mainCtrl.fxmlKurseListeController.tblKurseListe.refresh();
 
         if (PersonenDetailsController.zurueckPersonenliste) {
             plTab.getTabPane().getSelectionModel().select(plTab);
