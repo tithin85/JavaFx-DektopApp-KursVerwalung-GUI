@@ -263,7 +263,7 @@ public class CreatePdf {
 
     // Daten für die Liste aller Kurse holen und formatieren
     public String kursToPDF(Kurs kurs) {
-        return kurs.getName() + "\tStatus: " + kurs.getStatus() + neueZeile +
+        return kurs.getName() + tabulator + "Status: " + kurs.getStatus() + neueZeile +
                 "Start: " + dateOhneZeit.format(kurs.getStartDatum()) + tabulator +
                 "Ende: " + dateOhneZeit.format(kurs.getEndeDatum()) + tabulator +
                 "Dauer: " + kurs.getAnzahlTage() + " Tage" + neueZeile +
