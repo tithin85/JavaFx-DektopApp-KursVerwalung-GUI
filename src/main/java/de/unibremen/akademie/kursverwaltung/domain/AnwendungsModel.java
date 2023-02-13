@@ -8,7 +8,6 @@ public class AnwendungsModel extends KvModel {
     public Person aktuellePerson;
 
     private AnwendungsModel() {
-
     }
 
     public void load() {

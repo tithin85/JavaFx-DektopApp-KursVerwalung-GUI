@@ -35,7 +35,6 @@ public class Kurs implements Externalizable {
     private SimpleStringProperty kursBeschreibung;
     private SimpleStringProperty status;
 
-
     /**
      * Dieser Konstruktor hat keine Eingabeparameter, weil wir auf die Daten über Getter- und Setter-Methoden zugreifen.
      * Es wird lediglich ein Name und die aktuelleInZahl als SimplyProperty gesetzt.
@@ -56,7 +55,7 @@ public class Kurs implements Externalizable {
      * Einzig das Atrribut kursBeschreibung ist kein Pflichtfeld.
      */
     public Kurs(String name, int anzahlTage, int zyklus, Date startDatum, int minTnZahl, int maxTnZahl,
-                double gebuehrBrutto, double mwstProzent, String kursBeschreibung, String statusSTR) {
+                double gebuehrBrutto, double mwstProzent, String kursBeschreibung, String kursStatus) {
         this.name = new SimpleStringProperty();
         this.aktuelleTnZahl = new SimpleIntegerProperty(0);
         if (!setName(name)) {
@@ -83,20 +82,14 @@ public class Kurs implements Externalizable {
         if (!setMwstProzent(mwstProzent)) {
             throw new IllegalArgumentException("Bitte einen MwSt-Satz angeben!");
         }
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-
-        //setDisplaystartDate(dateFormat.format(startDatum));
         setKursBeschreibung(kursBeschreibung);
         setEndeDatum();
-        //setDisplayEndeDate(dateFormat.format(getEndeDatum()));
         setGebuehrNetto();
         setMwstEuro();
-        //setAktuelleTnZahl(getAktuelleTnZahl());
-
         if (!setFreiePlaetze()) {
             throw new IllegalArgumentException("Leider sind alles Plätze belegt!");
         }
-        setStatus(statusSTR);
+        setStatus(kursStatus);
     }
 
     public String getName() {
@@ -188,7 +181,8 @@ public class Kurs implements Externalizable {
         return true;
     }
 
-    public void setStartdatumFuerLoad(Date startdatum) {
+    // Was ist das? FuerLoad ??
+    public void setStartDatumFuerLoad(Date startdatum) {
         this.startDatum = startdatum;
     }
 
@@ -208,7 +202,6 @@ public class Kurs implements Externalizable {
     public void setEndeDatum() {
         long dat = startDatum.getTime() + ((Math.round((float) anzahlTage.get() / zyklus.get())) * 7 * 86400000L);
         this.endeDatum = new Date(dat);
-
     }
 
     public int getAktuelleTnZahl() {
@@ -216,21 +209,8 @@ public class Kurs implements Externalizable {
     }
 
     public void setAktuelleTnZahl(int aktuelleTnZahl) {
-
         this.aktuelleTnZahl.set(aktuelleTnZahl);
-
-
-        //this.aktuelleTnZahl = new SimpleIntegerProperty(aktuelleTnZahl);
     }
-
-   /* public void setAktuelleTnZahl() {
-        if (this.aktuelleTnZahl == null) {
-            this.aktuelleTnZahl = new SimpleIntegerProperty(this.teilnehmerListe.size());
-        } else {
-            this.aktuelleTnZahl.set(this.teilnehmerListe.size());
-        }
-
-    }*/
 
     /**
      * @return int
@@ -304,11 +284,9 @@ public class Kurs implements Externalizable {
             } else {
                 this.gebuehrBrutto.set(gebuehrBrutto);
             }
-
             return true;
         }
         return false;
-
     }
 
     public double getGebuehrNetto() {
@@ -354,7 +332,6 @@ public class Kurs implements Externalizable {
             } else {
                 this.mwstProzent.set(mwstProzent);
             }
-
             return true;
         }
         return false;
@@ -410,7 +387,6 @@ public class Kurs implements Externalizable {
         this.status = new SimpleStringProperty(status);
     }
 
-
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeUTF(getName());
@@ -428,19 +404,14 @@ public class Kurs implements Externalizable {
         out.writeDouble(getMwstEuro());
         out.writeInt(getFreiePlaetze());
         out.writeInt(getAktuelleTnZahl());
-        //out.writeUTF(getDisplaystartDate());
-        //out.writeUTF(getDisplayEndeDate());
-        //System.out.println(this);
     }
-
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-        //set(stream.readBoolean());
         setName(in.readUTF());
         setAnzahlTage(in.readInt());
         setZyklus(in.readInt());
-        setStartdatumFuerLoad((Date) in.readObject());
+        setStartDatumFuerLoad((Date) in.readObject());
         setMinTnZahl(in.readInt());
         setMaxTnZahl(in.readInt());
         setGebuehrBrutto(in.readDouble());
@@ -452,10 +423,6 @@ public class Kurs implements Externalizable {
         setMwstEuro(in.readDouble());
         setFreiePlaetze(in.readInt());
         setAktuelleTnZahl(in.readInt());
-        //setDisplaystartDate(in.readUTF());
-        //setDisplayEndeDate(in.readUTF());
-
-        //System.out.println(this);
     }
 
     @Override
@@ -476,7 +443,6 @@ public class Kurs implements Externalizable {
                 //", mwstEuro=" + mwstEuro.get() +
                 //", freiePlaetze=" + freiePlaetze.get() +
                 // ", aktuelleTnZahl=" + aktuelleTnZahl.get() +
-
                 '}';
     }
 
@@ -493,9 +459,3 @@ public class Kurs implements Externalizable {
         return Objects.hash(name, anzahlTage, zyklus, startDatum, endeDatum, minTnZahl, maxTnZahl, gebuehrBrutto, gebuehrNetto, mwstEuro, mwstProzent, kursBeschreibung, status);
     }
 }
-
-
-
-
-
-
